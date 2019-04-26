@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="on">
+<head>
+	<meta charset = "UTF-8">
+	<title>Vitrine</title>
+
+	<link rel="stylesheet" href='css/style.css'/>
+
+</head>
+<body>
+
+	<div class="bigvitrine">
+		<div class='reference_vitrine_class'>
+			<div id="reference_text" class="cabecalho_text">Você Visitou:</div>
+			<div id="reference_vitrine" onclick = 'referenceclick()' >
+				
+			</div>
+		</div>
+		<div class="vitrine_class">
+			<div id="recommendation_text" class="cabecalho_text">E talvez se interesse por:</div>
+			<div id="recommendation_vitrine" class="slider-content">
+			</div>
+			<button class='nextBtn' onclick="funcaonext(600)"> > </button>
+				<div class='nextBtnbox'></div>
+			<button class='prevBtn' onclick="funcaoprev(600)"> < </button>
+				<div class='prevBtnbox'></div>
+		</div>	
+	</div>
+</body>
+<script src='js/script.js'></script>
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
+	</style>
+</html>

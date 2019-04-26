@@ -1,0 +1,154 @@
+.cabecalho_text
+{
+	font-style: bold;
+	font-family: 'Lato', sans-serif;
+	font-size: 24px;
+	color: #000070;
+	background-color: rgb(204, 243, 255);
+}
+.bigvitrine
+{
+	width:950px;
+}
+.vitrine_class {
+	height:350px;
+	position:relative;
+	width: 70%;
+	display: inline-block;
+}
+.reference_vitrine_class{
+	position:relative;
+	right:0px;
+	top:0px;
+	border-left: 7px;
+	border-color: gray;
+	float: left;
+	width: 200px;
+}
+
+.imagem {
+	display: block;
+	margin: 0 auto;
+	border-right-width: thin;
+	border-top-width: thin;
+	border-left-width: thin;
+	border-bottom-width: thin;
+	border-style: solid;
+	border-color: gray;
+	padding: 7px;
+	border: 10px gray;
+}
+.texto{
+	font-family: 'Lato', sans-serif;
+	color:#000000;
+
+}
+.reference_texto{
+	font-family: 'Lato', sans-serif;
+	color:#000000;
+}
+.texto:hover{
+	font-style: bold;
+}
+.box_texto{
+	padding: 7px;
+	font-family: 'Lato', sans-serif;
+	color:rgb(223, 0, 0);
+}
+.preco
+{
+	font-style:bold;
+	font-family: 'Lato', sans-serif;
+	color:rgb(223, 0, 0);
+}
+.bigvitrine .reference_vitrine_class #reference_vitrine .reference_preco{
+	font-style:bold;
+	font-family: 'Lato', sans-serif;
+}
+.old_price{
+	font-style:bold;
+	font-family: 'Lato', sans-serif;
+	color:#000000;
+}
+
+.box {
+	display: inline-block;
+	height: 320px;
+	width: 200px;
+	background-color:rgb(241, 251, 255);
+	border-right-width: thin;
+	border-top-width: 0;
+	border-left-width: 0;
+	border-bottom-width: 0;
+	border-style: solid;
+	border-color: gray;
+	margin-top:0px;
+	border-radius: 2%;
+}
+.box:hover{
+	position:relative;
+	top:0px;
+	background-image: linear-gradient(rgb(184, 233, 255), white);
+
+}
+.box .imagem:hover{
+	border: 7px;
+	border-color: #00FFFF;
+}
+
+.slider-content{
+	left:7px;
+	float: left;
+	min-height: 400px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	width:100%;
+	top: 0px;
+}
+
+:root
+{
+	--leftindex:0px;
+}
+.slider-content #slider{
+	position: absolute;
+  left: var(--leftindex);
+  top: 0px;
+  height: 100%;
+  width: 2100px;
+  transition: 1s all;
+}
+.container{
+	width: 2200px;
+}
+.prevBtn, .nextBtn
+		{
+		width: 30px;
+		line-height: 30px;
+		border-radius: 30%;
+		font-size: 2rem;
+		text-align: center;
+		color: rgba(7, 7, 7, 0.521);
+		text-decoration: none;
+		position: absolute;
+		top: 50%;
+		background-color:rgba(211, 211, 211, 0.199);
+}
+.prevBtnbox, .nextBtnbox
+{
+	display: inline-block;
+	width: 50px;
+	color: rgba(0,0,0);
+	border-radius: 3%;
+	position:relative;
+}
+.prevBtn, .prevBtnbox {  
+    left: 10px;
+  }
+.nextBtn, .nextBtnbox {
+    right: 10px;
+  }
+.prevBtn:hover, .nextBtn:hover {
+	background-color: rgb(131, 160, 255);
+}
