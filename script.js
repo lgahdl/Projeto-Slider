@@ -132,20 +132,27 @@ var objeto = {
    }
 };
 var referenceUrl = "https:" + objeto.data.reference.item.detailUrl;
-var recommendationUrl = "";
+var recommendationUrl = new Array;
 for (var i = 0; i < objeto.data.recommendation.length; i++)
 {
-   recommendationUrl.append +="<div class='recommendationUrl'>" + "https://" + objeto.data.recommendation[i].detailUrl + "</div>";
+   recommendationUrl.push("https://" + objeto.data.recommendation[i].detailUrl);
 }
 
-var produtos = "";
-var produto_referencia = "<div class='box'><img class='imagem' src='http:"+ objeto.data.reference.item.imageName +"'/><div class=box_texto><div class='reference_texto'>"+ objeto.data.reference.item.name + "</div><div class= 'old_price><strong>" + "De:" + objeto.data.reference.item.oldPrice + "</strong></div><div class='reference_preco'><strong>" + "Por:" + objeto.data.reference.item.price +"</strong></div><div class='price'><strong>" + objeto.data.reference.item.productInfo.paymentConditions + "</strong></div><div class = 'price'><strong>" + "sem juros"+"</strong></div></div></div>"
+var produtos = new Array;
+var produto_referencia = "<div class='box'><img class='imagem' src='http:"+ objeto.data.reference.item.imageName +"'/><div class=box_texto><div class='reference_texto'>"+ objeto.data.reference.item.name + "</div><div class= 'old_price><strong>" + "De:" + objeto.data.reference.item.oldPrice + "</strong></div><div class='reference_preco'><strong>" + "Por:" + objeto.data.reference.item.price +"</strong></div><div class='price'><strong>" + objeto.data.reference.item.productInfo.paymentConditions + "<br>sem juros" +"</strong></div></div></div>"
 for (var i = 0; i < objeto.data.recommendation.length; i++) {
    var stringDe = "";
    if(objeto.data.recommendation[i].oldPrice !== null){
       stringDe = "De:" + objeto.data.recommendation[i].oldPrice
-   } 
-   produtos += "<div class='box' onclick = 'recommendationclick()'><img class='imagem' src='http:"+ objeto.data.recommendation[i].imageName +"'/><div class = #box_texto><div class='texto'>"+ objeto.data.recommendation[i].name + "</div><div class= 'old_price'>" + stringDe  + "</div><div class='preco'><strong>" + "Por:" + objeto.data.recommendation[i].price +"</strong></div><div class='preco'><strong>" + objeto.data.recommendation[i].productInfo.paymentConditions + "</strong></div></div></div>";	
+   }
+   produtos.push("<div class='box'><img class='imagem' src='http:"+ objeto.data.recommendation[i].imageName +"'/><div class = #box_texto><div class='texto'>"+ objeto.data.recommendation[i].name + "</div><div class= 'old_price'>" + stringDe  + "</div><div class='preco'><strong>" + "Por:" + objeto.data.recommendation[i].price +"</strong></div><div class='preco'><strong>" + objeto.data.recommendation[i].productInfo.paymentConditions + "<br>sem juros" + "</strong></div></div><div style='display:none' class='businessId'>" + objeto.data.recommendation[i].businessId + "</div></div>");
+
+}
+
+for (var i = 0; i < objeto.data.recommendation.length; i++) 
+{
+      elementBusinessId = new Array;   
+      elementBusinessId.push(parseInt(document.getElementsByClassName('businessId').innerHTML));
 }
 window.onload = function(){
    var a = document.getElementById('recommendation_vitrine');
@@ -165,7 +172,6 @@ let root = document.documentElement;
 
 function funcaoprev (page)
 {
-      slide = document.getElementById('slider');
       pageindex = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--leftindex')) + page;
       if (pageindex>=0)
       {
@@ -180,7 +186,6 @@ function funcaoprev (page)
 }
 function funcaonext(page)
 {
-      slide = document.getElementById('slider');
       pageindex = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--leftindex')) - page;
       if(pageindex <= -1400)
       {
@@ -194,9 +199,33 @@ function referenceclick()
 {
    window.open(referenceUrl)
 }
-for (var i = 0; i < objeto.data.recommendation.length; i++){
-   function recommendationclick()
+
+function recommendationclick()
+   { 
+      alert(elementBusinessId);
+      switch(elementId)
    {
-      window.open(recommendationUrl[i]);
+      case(1768411):{
+         window.open(recommendationUrl[0]);
+      }
+      case(1768491):{
+         window.open(recommendationUrl[1]);
+      }case(1706504):{
+         window.open(recommendationUrl[2]);
+      }case(1826580):{
+         window.open(recommendationUrl[3]);
+      }case(1765938):{
+         window.open(recommendationUrl[4]);
+      }case(1776985):{
+         window.open(recommendationUrl[5]);
+      }case(1768488):{
+         window.open(recommendationUrl[6]);
+      }case(1767783):{
+         window.open(recommendationUrl[7]);
+      }case(1680698):{
+         window.open(recommendationUrl[8]);
+      }case(470442):{
+         window.open(recommendationUrl[9]);
+      }
    }
-}
+   }
