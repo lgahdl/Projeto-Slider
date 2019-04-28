@@ -1,4 +1,65 @@
-var objeto = {
+
+var vitrineReferencia = ""; //Criacao da lista que vai armazenar os componentes da vitrine de Referencia (à direita)
+var vitrineRecomendacao = ""; //Criacao da lista que vai armazenar os componentes da vitrine vitrine de recomendacao (à esquerda)
+window.onload = function()
+{
+   vitrineRecomendacao = montarVitrineRecomendacao(); //chamada da funcao de criacao da vitrine recomendacao
+   vitrineReferencia = montarVitrineReferencia(); //chamada da funcao de criacao da vitrine referencia
+   var a = document.getElementById('recommendation_vitrine'); //busca um elemento pelo seu id, recommendation_vitrine, e associa a variavel a
+   var b = document.getElementById('reference_vitrine') //busca um elemento pelo seu id, reference_vitrine, e associa a variavel b
+	
+	var recomendacao_slider = ""; //criacao da variavel que vai armazenar o elemento "slider", que deslizará a minha vitrine de recomendacao
+
+   
+		recomendacao_slider = "<div id = 'slider'>" + vitrineRecomendacao + "</div>"; //criacao do elemento slider
+      a.innerHTML = recomendacao_slider; //internaliza o slider dentro de um container chamado recommendation_vitrine
+      b.innerHTML = vitrineReferencia; //internaliza a vitrine referencia dentro de um container chamado reference_vitrine
+
+};
+var root = document.documentElement; //chama o root, que está associado ao <html>, pois a ele foi associado uma variável global em css chamada --leftindex, que será usada nas funcoes de paginação
+
+function funcaoprev (page) //função que move o slider pelo botão prevBtn
+{
+      pgPositionValue = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--leftindex')) + page; //associa o valor da próxima posição do #slider à variável pgPositionValue
+      if (pgPositionValue>=0) // comando de seleção que tranca o slider à esquerda
+      {
+        root.style.setProperty('--leftindex', 40 + "px"); // seta sempre a posição 40, este 40 é um espaçamento proposital
+      }
+      else
+      {
+         root.style.setProperty('--leftindex',pgPositionValue + "px"); //seta a posição armazenada na variável
+      }
+
+      
+}
+function funcaonext(page) //função que move o slider pelo botão nextBtn
+{
+      pgPositionValue = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--leftindex')) - page; //associa o valor da próxima posição do #slider à variável pgPositionValue
+      if(pgPositionValue <= -1400)// comando de seleção que tranca o slider à direita
+      {
+         root.style.setProperty('--leftindex',-1360 + "px"); //seta sempre a posição máxima em -1360px à esquerda, é exatamente essa posição para dar o espaçamento adequado ao botão prevBtn
+      }
+      else{
+         root.style.setProperty('--leftindex',pgPositionValue + "px"); //seta a posição armazenada na variável pgPositionValue
+      }
+}
+function montarVitrineRecomendacao() //função que monta a vitrineRecomendacao
+{
+      var stringDe = ""; //criaçao de uma variavel do tipo string não será usada caso o produto tenha oldPrice == null
+      for (var i = 0; i < objeto.data.recommendation.length; i++){ //comando for que gerenciará a adição dos produtos à vitrineRecomendacao
+      if(objeto.data.recommendation[i].oldPrice !== null){ //comando de seleção que armazena a string caso o produto tenha oldPrice existente
+         stringDe = "De:" + objeto.data.recommendation[i].oldPrice
+      }
+      vitrineRecomendacao+=("<div class='box'><a style='text-decoration:none' href='"+ "https:" + objeto.data.recommendation[i].detailUrl + "' target= '_blank'><div class='image_container'><img class='imagem' src='http:"+ objeto.data.recommendation[i].imageName +"'/></div><div class =box_texto style='font-size:13px'><div class='texto'>"+ objeto.data.recommendation[i].name + "</div><div class= 'old_price'>" + stringDe  + "</div><div class='preco' style='font-size:15px'>" + "Por:<strong>" + objeto.data.recommendation[i].price +"</strong></div><div class='preco' style='font-size:14px'><strong>" + objeto.data.recommendation[i].productInfo.paymentConditions + "</strong><br>sem juros" + "</div></div><div style='display:none' id='businessId'>" + objeto.data.recommendation[i].businessId + "</div><div style='display:none' id='produtoUrl'>" + "https:" + objeto.data.recommendation[i].detailUrl + "</div></a></div>"); //comando de atribuição que inclui todos os elementos dos produtos da vitrine de recomendação, incluindo a imagem de cada um, a "caixa" do produto, as caixas de texto e os textos, e também um elemento <a> que gerencia o redirecionamento à url de cada um
+   }
+   return vitrineRecomendacao; //retorna a vitrine
+}
+function montarVitrineReferencia()
+{
+   var vitrineReferencia = "<div class='box'><a style='text-decoration:none' href='" + "https:" + objeto.data.reference.item.detailUrl + "' target= '_blank'><img class='imagem' src='http:"+ objeto.data.reference.item.imageName +"'/><div class=box_texto style='font-size:13px' ><div class='reference_texto'>"+ objeto.data.reference.item.name + "</div><div class= 'old_price>" + "De:" + objeto.data.reference.item.oldPrice + "</div><div class='reference_preco' style='font-size:15px' >" + "Por:<strong>" + objeto.data.reference.item.price +"</div><div class='price' style='font-size:14px'>" + objeto.data.reference.item.productInfo.paymentConditions + "</strong><br>sem juros"+"</div></div></a></div>"; //atribuição do produto referência à uma variável vitrineReferencia, incluindo o box, a imagem, o box de texto, os textos e o <a> que gerencia o redirecionamento ao link do produto
+   return vitrineReferencia;
+}
+var objeto = ({
    "data":{
       "widget":{
          "size":10
@@ -130,102 +191,6 @@ var objeto = {
          }
       ]
    }
-};
-var referenceUrl = "https:" + objeto.data.reference.item.detailUrl;
-var recommendationUrl = new Array;
-for (var i = 0; i < objeto.data.recommendation.length; i++)
-{
-   recommendationUrl.push("https://" + objeto.data.recommendation[i].detailUrl);
-}
+}); //criação de uma array que armazena os elementos jsonp
+//Nota: Tive alguns erros que eu não descobri como solucionar quando tentei fazer a chamada dos elementos por uma função, só consegui fazer o código funcionar criando esse objeto e trazendo o conteúdo do jsonp pra dentro do programa.
 
-var produtos = new Array;
-var produto_referencia = "<div class='box'><img class='imagem' src='http:"+ objeto.data.reference.item.imageName +"'/><div class=box_texto><div class='reference_texto'>"+ objeto.data.reference.item.name + "</div><div class= 'old_price><strong>" + "De:" + objeto.data.reference.item.oldPrice + "</strong></div><div class='reference_preco'><strong>" + "Por:" + objeto.data.reference.item.price +"</strong></div><div class='price'><strong>" + objeto.data.reference.item.productInfo.paymentConditions + "<br>sem juros" +"</strong></div></div></div>"
-for (var i = 0; i < objeto.data.recommendation.length; i++) {
-   var stringDe = "";
-   if(objeto.data.recommendation[i].oldPrice !== null){
-      stringDe = "De:" + objeto.data.recommendation[i].oldPrice
-   }
-   produtos.push("<div class='box'><img class='imagem' src='http:"+ objeto.data.recommendation[i].imageName +"'/><div class = #box_texto><div class='texto'>"+ objeto.data.recommendation[i].name + "</div><div class= 'old_price'>" + stringDe  + "</div><div class='preco'><strong>" + "Por:" + objeto.data.recommendation[i].price +"</strong></div><div class='preco'><strong>" + objeto.data.recommendation[i].productInfo.paymentConditions + "<br>sem juros" + "</strong></div></div><div style='display:none' class='businessId'>" + objeto.data.recommendation[i].businessId + "</div></div>");
-
-}
-
-for (var i = 0; i < objeto.data.recommendation.length; i++) 
-{
-      elementBusinessId = new Array;   
-      elementBusinessId.push(parseInt(document.getElementsByClassName('businessId').innerHTML));
-}
-window.onload = function(){
-   var a = document.getElementById('recommendation_vitrine');
-   var b = document.getElementById('reference_vitrine')
-	
-	var prod_slider = "";
-	var prod_container = "";
-
-		
-		prod_slider = "<div id = 'slider'>" + produtos + "</div>";
-		prod_container = prod_slider;
-      a.innerHTML = prod_container;
-      b.innerHTML = produto_referencia;
-
-};
-let root = document.documentElement;
-
-function funcaoprev (page)
-{
-      pageindex = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--leftindex')) + page;
-      if (pageindex>=0)
-      {
-        root.style.setProperty('--leftindex',0 + "px");
-      }
-      else
-      {
-         root.style.setProperty('--leftindex',pageindex + "px");
-      }
-
-      
-}
-function funcaonext(page)
-{
-      pageindex = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--leftindex')) - page;
-      if(pageindex <= -1400)
-      {
-         root.style.setProperty('--leftindex',-1400 + "px");
-      }
-      else{
-         root.style.setProperty('--leftindex',pageindex + "px");
-      }
-}
-function referenceclick()
-{
-   window.open(referenceUrl)
-}
-
-function recommendationclick()
-   { 
-      alert(elementBusinessId);
-      switch(elementId)
-   {
-      case(1768411):{
-         window.open(recommendationUrl[0]);
-      }
-      case(1768491):{
-         window.open(recommendationUrl[1]);
-      }case(1706504):{
-         window.open(recommendationUrl[2]);
-      }case(1826580):{
-         window.open(recommendationUrl[3]);
-      }case(1765938):{
-         window.open(recommendationUrl[4]);
-      }case(1776985):{
-         window.open(recommendationUrl[5]);
-      }case(1768488):{
-         window.open(recommendationUrl[6]);
-      }case(1767783):{
-         window.open(recommendationUrl[7]);
-      }case(1680698):{
-         window.open(recommendationUrl[8]);
-      }case(470442):{
-         window.open(recommendationUrl[9]);
-      }
-   }
-   }

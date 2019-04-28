@@ -1,154 +1,156 @@
-.cabecalho_text
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900'); /*importa a fonte utilizada nos textos*/
+.cabecalho_text /* define o estilo dos elementos contidos no cabecalho da pagina*/
 {
-	font-style: bold;
-	font-family: 'Lato', sans-serif;
-	font-size: 24px;
-	color: #000070;
-	background-color: rgb(204, 243, 255);
+	padding:3px; /*cria um espaçamento em volta do conteúdo do cabecalho*/
+	height:30px; /* define a altura do cabecalho*/
+	width:790px; /* define a largura*/
+	font-family: 'Lato', sans-serif; /*define o estilo da fonte*/
+	color: #00669C; /*a cor das letras*/
+	background-color: #E5F1FB; /*a cor da caixa de background*/
 }
-.bigvitrine
+.bigvitrine /*definição das propriedades da vitrine grande que engloba tudo, incluindo o cabecalho*/
+{ 
+	width:990px; /*define a largura da vitrine grande*/
+	height: 340px; /*a altura*/
+}
+.vitrine_class /*definição das propriedades do lado direito da bigvitrine, incluindo a parte direita do cabeçalho*/
 {
-	width:950px;
+	height:340px; /*define a altura*/
+	position:relative; /*define que a posição é relativa à posição normal*/
+	width: 79%; /* define a largura conforme a porcentagem sobre o elemento que o engloba */
+	display: inline-block; /*bloqueia a visualização da classe na mesma linha em que ela está contida*/
 }
-.vitrine_class {
-	height:350px;
-	position:relative;
-	width: 70%;
-	display: inline-block;
-}
-.reference_vitrine_class{
-	position:relative;
-	right:0px;
-	top:0px;
-	border-left: 7px;
-	border-color: gray;
-	float: left;
-	width: 200px;
-}
-
-.imagem {
-	display: block;
-	margin: 0 auto;
-	border-right-width: thin;
-	border-top-width: thin;
-	border-left-width: thin;
-	border-bottom-width: thin;
-	border-style: solid;
-	border-color: gray;
-	padding: 7px;
-	border: 10px gray;
-}
-.texto{
-	font-family: 'Lato', sans-serif;
-	color:#000000;
-
-}
-.reference_texto{
-	font-family: 'Lato', sans-serif;
-	color:#000000;
-}
-.texto:hover{
-	font-style: bold;
-}
-.box_texto{
-	padding: 7px;
-	font-family: 'Lato', sans-serif;
-	color:rgb(223, 0, 0);
-}
-.preco
+.reference_vitrine_class /*definição das propriedades da vitrine de referência, à esquerda,incluindo também o cabecalho*/
 {
-	font-style:bold;
-	font-family: 'Lato', sans-serif;
-	color:rgb(223, 0, 0);
+	float: left; /*deixa o elemento "flutuando" à esquerda*/
+	height:340px; /*define a altura*/
+	width: 200px; /*define a largura, note que ela não ocupa os 21% remanescentes e a classe bigvitrine fica com folga à direita*/
+	border-right: thin solid lightgray; /*define uma pequena linha à direita que separa o produto de referência dos produtos de recomendação*/
 }
-.bigvitrine .reference_vitrine_class #reference_vitrine .reference_preco{
-	font-style:bold;
-	font-family: 'Lato', sans-serif;
-}
-.old_price{
-	font-style:bold;
-	font-family: 'Lato', sans-serif;
-	color:#000000;
-}
-
-.box {
-	display: inline-block;
-	height: 320px;
-	width: 200px;
-	background-color:rgb(241, 251, 255);
-	border-right-width: thin;
-	border-top-width: 0;
-	border-left-width: 0;
-	border-bottom-width: 0;
-	border-style: solid;
-	border-color: gray;
-	margin-top:0px;
-	border-radius: 2%;
-}
-.box:hover{
-	position:relative;
-	top:0px;
-	background-image: linear-gradient(rgb(184, 233, 255), white);
-
-}
-.box .imagem:hover{
-	border: 7px;
-	border-color: #00FFFF;
-}
-
-.slider-content{
-	left:7px;
-	float: left;
-	min-height: 400px;
-	margin: 0 auto;
-	overflow: hidden;
-	position: relative;
-	width:100%;
-	top: 0px;
-}
-
-:root
+.imagem /*define as propriedades de todas as imagens*/
 {
-	--leftindex:0px;
+	position:relative; /*posição relativa com o elemento hierarquicamente mais próximo*/
+	display: block; /*bloqueia o elemento em uma posição*/
+	margin: 0 auto;	/*define a margem 0, e o auto coloca a mesma margem para todas as direções, e centraliza o elemento*/
 }
-.slider-content #slider{
-	position: absolute;
-  left: var(--leftindex);
-  top: 0px;
-  height: 100%;
-  width: 2100px;
-  transition: 1s all;
+
+.texto /*define as propriedades da caixa do primeiro texto, de descrição dos produtos*/
+{
+	height:50px; /*altura da caixa*/
+	overflow:hidden; /*esconde o texto que ultrapassa a altura máxima*/
+	text-overflow:ellipsis; /*comando que coloca reticências ao final do texto, para indicar que tem texto escondido*/
+	font-family: 'Lato', sans-serif; /*define o estilo da fonte*/
+	color:#000000; /*define a cor da fonte*/
 }
-.container{
-	width: 2200px;
+.texto:after /**/
+{
+	overflow:hidden; /**/
+	text-overflow:ellipsis; /**/
 }
-.prevBtn, .nextBtn
+.reference_texto /*define as propriedades da caixa do texto de descrição do produto referência, é igual à classe texto*/
+{
+	height:50px; /**/
+	text-overflow:ellipsis; /**/
+	overflow: hidden; /**/
+	font-family: 'Lato', sans-serif; /**/
+	color:#000000; /**/
+}
+
+.box_texto /*define as propriedades da caixa que engloba todos os textos dos produtos*/
+{
+	padding: 7px; /*distanciamento entre o elemento contido e a borda do box_texto*/
+	font-family: 'Lato', sans-serif; /**/
+	color:rgb(223, 0, 0); /*define a cor unicamente dos elementos de preço do produto de referência, os preços dos produtos recomendação, do texto e reference_texto(que já foram definidos internamente em suas classes)*/
+}
+.preco /**/
+{
+	font-family: 'Lato', sans-serif; /**/
+	color:rgb(223, 0, 0); /*define a cor dos elementos de preço dos produtos recomendação*/
+}
+.old_price /*define as propriedades dos textos de old_price*/
+{
+	font-family: 'Lato', sans-serif; /**/
+	color:#000000; /*define a cor preta*/
+}
+
+.box /*uma das classes mais importantes, define as propriedades dos boxes que contém os produtos*/
+{
+	position:relative; /*posição relativa à posição que seria normal à ele*/
+	float:left; /*coloca cada box "flutuando" à esquerda, ou seja, o próximo box flutuará à esquerda do anterior*/
+	display: inline-block; /*bloqueia os elementos na mesma linha em que está contido, enquanto houver espaço no seu elemento pai*/
+	height: 340px; /*define a altura*/
+	width: 200px; /*define a largura*/
+	margin-top:0px; /*define a margem na parte de cima do elemento*/
+	cursor:pointer; /*propriedade que faz o mouse se transformar em uma mãozinha(ideal para o clique do usuário)*/
+}
+.box:hover /*define mudança de propriedade quando um mouse passa por cima do elemento*/
+{
+	background-image: linear-gradient(#E5F1FB, white); /*coloca no background um gradiente de cores que desce de um cinza levemente azulado para o branco*/
+
+}
+
+.slider-content /*define as propriedades da vitrine de recomendação, agora desprezando o cabeçalho*/
+{
+	left:7px; /*posiciona a 7px a esquerda relativo ao elemento que engloba ela, esse espaçamento pequeno serve para o prevBtnbox não esconder a linha de borda à direita do produto referência*/
+	height: 340px; /*define a altura*/
+	overflow: hidden; /*esconde os elementos contidos que ultrapassam o limite das dimensões deste elemento, no caso é o #slider, que tem um width de 2100px*/
+	position: relative; /*define a posição como relativa*/
+	width:100%; /*ocupa 100% do que está disponivel de espaço horizontal, no que diz respeito ao elemento que engloba essa classe*/
+}
+
+:root /*define as propriedades do que estiver contido no root do html, o <html>*/
+{
+	--leftindex:40px; /*cria uma variável --leftindex, e atribui um valor 40px à ela*/
+}
+.slider-content #slider /*define as propriedades de um slider, que seria uma caixa grande que contém todos os produtos de recomendação*/
+{
+	position: absolute; /*sua posição é absoluta dentro do elemento que a engloba*/
+  left: var(--leftindex); /*define uma variável, criada no root, como valor de posição, partindo da esquerda do inicio do elemento que a engloba*/
+  height: 100%; /*utiliza 100% da altura disponivel, dentro do elemento que engloba*/
+  width: 2100px; /*define a largura 2100px*/
+  transition: 0.6s all; /*define um tempo de transição para qualquer mudança de elemento, deixando mais suave a mudança da posição left*/
+}
+.prevBtn, .nextBtn,.prevBtnbox, .nextBtnbox /*define as propriedades dos elementos relacionados aos botões laterais*/
 		{
-		width: 30px;
-		line-height: 30px;
-		border-radius: 30%;
-		font-size: 2rem;
-		text-align: center;
-		color: rgba(7, 7, 7, 0.521);
-		text-decoration: none;
-		position: absolute;
-		top: 50%;
-		background-color:rgba(211, 211, 211, 0.199);
+		position: absolute; /*define a posição deles como absoluta dentro dos elementos que os engloba*/	
 }
-.prevBtnbox, .nextBtnbox
+.prevBtn, .nextBtn /*define as propriedades dos botões laterais*/
 {
-	display: inline-block;
-	width: 50px;
-	color: rgba(0,0,0);
-	border-radius: 3%;
-	position:relative;
+	width: 20px; /*define a largura*/
+	line-height: 30px; /*define a altura de um box transparente que contém o texto, no caso < e > */
+	border-radius: 20%; /*define um arredondamento da borda do box*/
+	font-size: 15px; /*define o tamanho da flechinha*/
+	text-align: center; /*alinha a flecha no centro*/
+	color: rgba(7, 7, 7, 0.521); /*define a cor das flechas*/
+	background-color:rgba(211, 211, 211, 0.199); /*define a cor e transparência da caixa do botão*/
 }
-.prevBtn, .prevBtnbox {  
-    left: 10px;
-  }
-.nextBtn, .nextBtnbox {
-    right: 10px;
-  }
-.prevBtn:hover, .nextBtn:hover {
-	background-color: rgb(131, 160, 255);
+.prevBtnbox, .nextBtnbox /**/
+{
+	top:40px; /*define a posição da caixa, a partir do topo da figura, que esconde os produtos atrás do botão*/
+	height:340px; /*define a altura*/
+	width: 50px; /*define a largura*/
+}
+.prevBtn /*propriedades do botão prevBtn*/
+{  
+		top:40px; /*posicionamento a partir do topo, para ele ficar exatamente em cima da figura*/
+    left: 5px; /*posicionamento a partir da esquerda*/
+	}
+.nextBtn /*propriedades do botão nextBtn, muito parecido com o prevBtn, unica diferença é que o posicionamento horizontal é à partir da direita*/
+{
+	top:40px; /**/
+	right:5px /**/
+}
+.nextBtnbox /*propriedades individuais do box que fica atrás do nextBtn*/
+{
+		right: -15px; /*posicionamento à partir da esquerda*/
+		background-image: linear-gradient( to left, white, white, rgba(255, 255, 255, 0))/*gradiente que fica transparente ao centralizar*/
+	}
+	.prevBtnbox /*propriedades individuais do box que fica atrás do prevBtnbox, muito parecido com o .nextBtnbox, mas o posicionamento é diferente e o gradiente de cores é invertido*/
+	{
+		left:5px; /**/
+		background-image: linear-gradient( to right, white, white, rgba(255, 255, 255, 0)) /**/
+	}
+.prevBtn:hover, .nextBtn:hover /*propriedade que muda a cor do botão com o passar do mouse*/
+ {
+	background-color: rgba(184, 233, 255, 0.671); /**/
 }

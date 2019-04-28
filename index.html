@@ -1,34 +1,36 @@
-<!DOCTYPE html>
-<html lang="on">
+<!DOCTYPE html><!--declaração para o browser de qual html está sendo usado-->
+<html lang="en"><!--inicia a tag raiz, que diz para o browser que este é um elemento html, e define a lingua usada, no caso ingles-->
 <head>
-	<meta charset = "UTF-8">
-	<title>Vitrine</title>
+	<meta charset = "UTF-8"><!--define o padrão de codificação das letras e símbolos como UTF-8-->
+	<title>Vitrine</title><!--dá o título da página-->
 
-	<link rel="stylesheet" href='style.css'/>
+	<link rel="stylesheet" href='style.css'/> <!--importa o arquivo style.css-->
+
 
 </head>
 <body>
 
-	<div class="bigvitrine">
-		<div class='reference_vitrine_class'>
-			<div id="reference_text" class="cabecalho_text">Você Visitou:</div>
-			<div id="reference_vitrine" onclick = 'referenceclick()' >
+
+	<div class="bigvitrine"><!--criação da classe pai de todas-->
+		<div class='reference_vitrine_class'><!--criaçao da vitrine de referencia-->
+			<div id="reference_text" class="cabecalho_text"style = 'font-size: 17px'><strong>Você visitou:</strong></div><!--criacao do cabecalho da vitrine referencia-->
+			<div id="reference_vitrine"><!--criacao da vitrine de referencia que fica abaixo do cabeçalho-->
 				
 			</div>
 		</div>
-		<div class="vitrine_class">
-			<div id="recommendation_text" class="cabecalho_text">E talvez se interesse por:</div>
-			<div id="recommendation_vitrine" class="slider-content" onclick = 'recommendationclick()'>
+		<div class="vitrine_class"><!--criação da vitrine de recomendação-->
+			<div id="recommendation_text" class="cabecalho_text" style = 'font-size: 17px'><strong>e talvez se interesse por:</strong></div><!--criação do cabeçalho da vitrine de recomendação-->
+			<div id="recommendation_vitrine" class="slider-content"><!--criação da vitrine de recomendação que fica abaixo do cabeçalho-->
 			</div>
-			<button class='nextBtn' onclick="funcaonext(600)"> > </button>
-				<div class='nextBtnbox'></div>
-			<button class='prevBtn' onclick="funcaoprev(600)"> < </button>
-				<div class='prevBtnbox'></div>
+			<div class='nextBtnbox'><!--criação do box que fica atrás do botão nextBtn-->
+			<button class='nextBtn' onclick="funcaonext(600)"><strong> > </strong></button><!--criação do botão nextBtn-->
+			</div>
+			<div class='prevBtnbox'><!--criação do box que fica atrás do botão prevBtn-->
+			<button class='prevBtn' onclick="funcaoprev(600)"><strong> < </strong></button><!--criação do botão prevBtn-->
+				</div>
 		</div>	
 	</div>
 </body>
-<script src='script.js'></script>
-<style>
-	@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
-	</style>
+<script src='script.js'></script><!--importa o script.js que contém o programa em javascript-->
+
 </html>
